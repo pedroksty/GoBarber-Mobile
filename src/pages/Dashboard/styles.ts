@@ -10,7 +10,7 @@ export const Container = styled.View`
 
 export const Header = styled.View`
   padding: 24px;
-  padding-top: ${getStatusBarHeight() + 24}px;
+  padding-top: 24px;
   background: #28262e;
 
   flex-direction: row;
