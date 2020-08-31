@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState, useMemo } from 'react';
 import Icon from 'react-native-vector-icons/Feather'
 import { useNavigation } from '@react-navigation/native';
 
@@ -41,13 +41,16 @@ const Dashboard: React.FC = () => {
   }, [])
 
   const navigateToProfile = useCallback(() => {
-    signOut()
+    navigate('Profile')
   }, [navigate])
 
   const navigateToCreateAppointment = useCallback((providerId: string) => {
     navigate('CreateAppointment', {providerId})
   }, [navigate])
 
+  const defaultImageURL = useMemo(() => {
+    return 'https://portal.staralliance.com/cms/aux-pictures/prototype-images/avatar-default.png/@@images/image.png'
+  }, [])
 
 
   return (
@@ -59,7 +62,7 @@ const Dashboard: React.FC = () => {
         </HeaderTitle>
 
         <ProfileButton onPress={navigateToProfile} >
-          <UserAvatar source={{uri: user.avatar_url ? user.avatar_url : 'https://avatars2.githubusercontent.com/u/52813792?s=460&u=ee9c8be21c18177a6cf9b214124eb99f178be76b&v=4'}} />
+          <UserAvatar source={{uri: user.avatar_url ? user.avatar_url : defaultImageURL}} />
         </ProfileButton>
       </Header>
 

@@ -47,7 +47,7 @@ interface RouteParams {
 
 interface AvailabilityItem {
   hour: number
-  available: boolean
+  available: boolean;
 }
 
 
