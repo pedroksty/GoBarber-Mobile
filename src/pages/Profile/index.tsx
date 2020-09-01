@@ -24,7 +24,14 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 
-import { Title, Container, UserAvatarButton, UserAvatar, BackButton } from './styles'
+import { 
+  Title, 
+  Container, 
+  UserAvatarButton, 
+  UserAvatar, 
+  BackButton,
+  LogoutButton
+} from './styles'
 
 interface ProfileFormData {
   name: string
@@ -35,7 +42,7 @@ interface ProfileFormData {
 }
 
 const Profile: React.FC = () => {
-  const { user, updateUser} = useAuth()
+  const { user, updateUser, signOut} = useAuth()
 
   const formRef = useRef<FormHandles>(null);
   const emailInputRef = useRef<TextInput>(null);
@@ -119,6 +126,10 @@ const Profile: React.FC = () => {
     },
     [navigation, updateUser]
   );
+
+  const handleLogout = useCallback(() => {
+    signOut()
+  }, [])
 
   const handleUpdateAvatar = useCallback(() => {
     ImagePicker.showImagePicker({ 
@@ -251,6 +262,10 @@ const Profile: React.FC = () => {
               <Button onPress={() => formRef.current?.submitForm()}>
                 Confirmar mudanças
               </Button>
+
+              <LogoutButton onPress={handleLogout}>
+                Deslogar
+              </LogoutButton>
             </Form>
           </Container>
         </ScrollView>

@@ -1,9 +1,8 @@
 import styled from 'styled-components/native';
-import { Platform } from 'react-native';
+import Button from '../../components/Button';
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
   flex: 1;
-  justify-content: center;
   padding: 0 30px;
 `;
 
@@ -28,4 +27,7 @@ export const UserAvatar = styled.Image`
   height: 148px;
   border-radius: 74px;
   align-self: center;
+`
+export const LogoutButton = styled(Button)`
+  background: #e02626;
 `
